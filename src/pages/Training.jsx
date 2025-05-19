@@ -8,18 +8,17 @@ const Training = () => {
     <div>
         
       {/* Training Banner */}
-      <div className="position-relative">
+      
+
+  <div className="w-100 mb-2">
         <img
           src={trinbanner}
-          alt="Training Banner"
+          alt="Team Banner"
           className="img-fluid w-100"
-          style={{
-            height: "350px",
-            objectFit: "cover",
-            filter: "brightness(75%)",
-          }}
+          style={{ maxHeight: "400px", objectFit: "cover" }}
         />
       </div>
+
 
       {/* Training Content */}
       <div className="container text-center my-5 px-3 px-md-5">

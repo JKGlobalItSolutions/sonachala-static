@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import logo from "../assets/footer/logo1.png";
-import explore from "../assets/footer/exploreimg.png";
+// import explore from "../assets/footer/exploreimg.png";
 
 import componislogo from "../assets/footer/footerimg.png";
 
@@ -17,28 +17,28 @@ const Footer = () => {
   return (
    
 
-    <footer className="bg-dark text-white pt-4 pb-2">
+    <footer className="bg-dark text-white pt-4 pb-0">
       <div className="container-fluid">
         <div className="row text-center text-md-start align-items-start">
           {/* Logo */}
-          <div className="col-lg-6 mt-5 mb-md-0">
+          <div className="col-lg-6 mt-0 mb-md-0">
             <div className="d-flex justify-content-center justify-content-md-start mb-0">
 
               <img
                 src={logo}
                 alt="Logo"
-                width="300"
-                height="200"
+                width="500"
+                height="300"
                 className="rounded-5"
               />
 
-               <img
+               {/* <img
                 src={explore}
                 alt="Logo"
                 width="150"
                 height="200"
                 className="rounded-5"
-              />
+              /> */}
               
             </div>
           </div>

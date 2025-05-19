@@ -19,11 +19,7 @@ const Portfolio = () => {
           src={bannerImage}
           alt="Portfolio Banner"
           className="img-fluid w-100"
-          style={{
-            height: "350px",
-            objectFit: "cover",
-            filter: "brightness(75%)",
-          }}
+          style={{ maxHeight: "400px", objectFit: "cover" }}
         />
         
       </div>

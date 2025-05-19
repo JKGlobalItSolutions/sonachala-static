@@ -7,13 +7,14 @@ const Navbar = () => {
   return (
     <div>
       <nav
-        className="navbar navbar-expand-lg shadow-sm"
+        className="navbar navbar-expand-lg shadow-sm "
         style={{
           backgroundColor: "rgba(255, 255, 255, 0.7)",
           backdropFilter: "blur(15px)",
           WebkitBackdropFilter: "blur(10px)",
           position: "fixed",
           top: 0,
+        
           width: "100%",
           zIndex: 1030,
           borderBottom: "1px solid rgba(0, 0, 0, 0.1)",

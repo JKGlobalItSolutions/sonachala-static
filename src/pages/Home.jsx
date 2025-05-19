@@ -19,55 +19,78 @@ const Home = () => {
       </div>
 
       {/* Intro Section */}
-      <div className="row align-items-center mt-lg-5 ">
+      <div className="row align-items-center mt-lg-5  ">
         {/* Left Image Section */}
+
         <div className="col-md-6 position-relative mb-4 mb-md-0">
-          <div className="position-relative" style={{ paddingLeft: "60px" }}>
-            {/* Main Image with green border and shadow */}
-            <img
-              src={woman1}
-              alt="Meeting"
-              className="img-fluid"
-              style={{
-                width: "60%",
-               
-              }}
-            />
+          <div className="position-relative image-container">
+            {/* Main Image */}
+            <img src={woman1} alt="Meeting" className="img-fluid bigimg" />
 
             {/* Overlapping Image */}
             <img
               src={woman2}
               alt="Discussion"
-              className="img-fluid position-absolute"
-              style={{
-                width: "35%",
-                top: "150px",
-                left: "180px",
-                // border: "4px solid #000",
-                borderRadius: "12px",
-                boxShadow: "8px 8px 0px rgba(0,0,0,0.25)",
-                backgroundColor: "#fff",
-              }}
+              className="img-fluid position-absolute responsive-overlap-img"
             />
+
+            <style jsx>{`
+              .image-container {
+                padding-left: 60px;
+              }
+
+              .bigimg {
+                width: 60%;
+                position: relative; /* Needed if you want to use 'left' */
+              }
+
+              .responsive-overlap-img {
+                width: 35%;
+                top: 150px;
+                left: 180px;
+                border-radius: 12px;
+                box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.25);
+                background-color: #fff;
+              }
+
+              @media (max-width: 576px) {
+                .image-container {
+                  padding-left: 20px;
+                }
+
+                .bigimg {
+                  width: 50%;
+                 right:20px; /* optional adjustment if you were shifting */
+                }
+
+                .responsive-overlap-img {
+                  width: 45%;
+                  top: 5px;
+                  left: 75%;
+                  transform: translateX(-50%);
+                  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.2);
+                
+                }
+                }
+              }
+            `}</style>
           </div>
         </div>
 
         {/* Right Text Section */}
-        <div className="col-md-6 fs-5">
+        <div className="col-md-6 fs-5  ">
           <p>
             <strong style={{ color: "#038A5E" }}>Sonachala</strong> is a hotel
             marketing company focused on the mid-market segment of the Indian
             hospitality industry. As the second-largest revenue management
             company in India, we currently serve a wide range of hotels across
             southern India, including destinations in Tamil Nadu,
-            Thiruvannamalai — with plans to expand nationwide.
-          
-            Specializing in revenue management, Sonachala offers tailored
-            solutions for hotels, motels, resorts, service apartments, bed and
-            breakfasts, and homestays. Our comprehensive services are designed
-            to meet all your property management needs, with a primary focus on
-            increasing your online sales through various OTAs (Online Travel
-            Agencies).
+            Thiruvannamalai — with plans to expand nationwide. Specializing in
+            revenue management, Sonachala offers tailored solutions for hotels,
+            motels, resorts, service apartments, bed and breakfasts, and
+            homestays. Our comprehensive services are designed to meet all your
+            property management needs, with a primary focus on increasing your
+            online sales through various OTAs (Online Travel Agencies).
           </p>
           <button className="btn btn-outline-dark mt-3 px-4 py-2">
             Discover More
@@ -76,19 +99,15 @@ const Home = () => {
       </div>
 
       {/* See Us in Action */}
-      <div className="text-center mb-5  pt-lg-5 mt-lg-5 ">
-        <h2 className="fw-bold mb-3 ">See Us in Action</h2>
-        <img
-          src={team}
-          className="img-fluid "
-          alt="Team meeting"
-        />
+      <div className="text-center mb-5  pt-lg-5 mt-lg-5  ">
+        <h2 className="fw-bold mb-3  mt-4">See Us in Action</h2>
+        <img src={team} className="img-fluid " alt="Team meeting" />
       </div>
 
       {/* About Us */}
-      <div className="mb-5 p-4">
+      <div className="mb-1 p-4">
         <h3 className="fw-bold">ABOUT US</h3>
-        <p>
+        <p className="fs-5">
           Our founder and both CEOs bring nearly two decades of experience in
           the hotel and travel industry, starting their journey in 2003. With
           deep insight into the challenges faced by hoteliers—and more
@@ -98,7 +117,7 @@ const Home = () => {
         </p>
       </div>
 
-      {/* Cards Section */}
+     
 
       {/* Cards Section */}
       <div className="row g-4 p-5">
@@ -230,7 +249,6 @@ const Home = () => {
           </div>
         </div>
       </div>
-
     </div>
   );
 };
