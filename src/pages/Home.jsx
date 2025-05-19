@@ -49,7 +49,7 @@ const Home = () => {
         {/* Right Text Section */}
         <div className="col-md-6">
           <p>
-            <strong className="text-success">Sonachala</strong> is a hotel
+            <strong className="text-success">Sonachala</strong> is a hotels
             marketing company focused on the mid-market segment of the Indian
             hospitality industry. As the second-largest revenue management
             company in India, we currently serve a wide range of hotels across

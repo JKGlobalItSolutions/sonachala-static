@@ -145,7 +145,7 @@ const Navbar = () => {
                 </a>
 
                 <ul
-                  className="dropdown-menu show"
+                  className="dropdown-menu "
                   style={{
                     
                     border: "none",
