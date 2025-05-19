@@ -19,44 +19,49 @@ const Home = () => {
       </div>
 
       {/* Intro Section */}
-      <div className="row align-items-center mt-lg-5 mb-5">
+      <div className="row align-items-center mt-lg-5 ">
         {/* Left Image Section */}
         <div className="col-md-6 position-relative mb-4 mb-md-0">
-          <div className="position-relative" style={{ paddingLeft: "40px" }}>
+          <div className="position-relative" style={{ paddingLeft: "60px" }}>
+            {/* Main Image with green border and shadow */}
             <img
               src={woman1}
               alt="Meeting"
-              className="img-fluid  rounded shadow w-75"
-              style={{ border: "2px solid #2db284", borderRadius: "1px" }}
+              className="img-fluid"
+              style={{
+                width: "60%",
+               
+              }}
             />
+
+            {/* Overlapping Image */}
             <img
               src={woman2}
               alt="Discussion"
-              className="img-fluid position-absolute w-50"
+              className="img-fluid position-absolute"
               style={{
-                width: "50%",
-                bottom: "-20px",
-                top: "180px",
-                left: "200px",
-                border: "2px solid black",
-                borderRadius: "5px",
-                boxShadow: "1px 1px 1px rgba(0,0,0,0.2)",
+                width: "35%",
+                top: "150px",
+                left: "180px",
+                // border: "4px solid #000",
+                borderRadius: "12px",
+                boxShadow: "8px 8px 0px rgba(0,0,0,0.25)",
+                backgroundColor: "#fff",
               }}
             />
           </div>
         </div>
 
         {/* Right Text Section */}
-        <div className="col-md-6">
+        <div className="col-md-6 fs-5">
           <p>
-            <strong className="text-success">Sonachala</strong> is a hotels
+            <strong style={{ color: "#038A5E" }}>Sonachala</strong> is a hotel
             marketing company focused on the mid-market segment of the Indian
             hospitality industry. As the second-largest revenue management
             company in India, we currently serve a wide range of hotels across
             southern India, including destinations in Tamil Nadu,
             Thiruvannamalai — with plans to expand nationwide.
-          </p>
-          <p>
+          
             Specializing in revenue management, Sonachala offers tailored
             solutions for hotels, motels, resorts, service apartments, bed and
             breakfasts, and homestays. Our comprehensive services are designed
@@ -64,16 +69,18 @@ const Home = () => {
             increasing your online sales through various OTAs (Online Travel
             Agencies).
           </p>
-          <button className="btn btn-outline-dark mt-3">Discover More</button>
+          <button className="btn btn-outline-dark mt-3 px-4 py-2">
+            Discover More
+          </button>
         </div>
       </div>
 
       {/* See Us in Action */}
-      <div className="text-center mb-5  mt-lg-5 ">
+      <div className="text-center mb-5  pt-lg-5 mt-lg-5 ">
         <h2 className="fw-bold mb-3 ">See Us in Action</h2>
         <img
           src={team}
-          className="img-fluid rounded shadow"
+          className="img-fluid "
           alt="Team meeting"
         />
       </div>
@@ -86,8 +93,8 @@ const Home = () => {
           the hotel and travel industry, starting their journey in 2003. With
           deep insight into the challenges faced by hoteliers—and more
           importantly, the solutions—they established{" "}
-          <strong style={{ color: "#a7dbcb" }}>Sonachala.com</strong> in 2023 to address these needs with
-          expertise and innovation.
+          <strong style={{ color: "#a7dbcb" }}>Sonachala.com</strong> in 2023 to
+          address these needs with expertise and innovation.
         </p>
       </div>
 
@@ -223,6 +230,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+
     </div>
   );
 };

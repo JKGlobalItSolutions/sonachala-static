@@ -1,22 +1,31 @@
 import React from "react";
 import { FaHeadset } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import logo from "../assets/navimg/logo1.png";
+import logo from "../assets/navimg/navlogo.png";
 
 const Navbar = () => {
   return (
     <div>
       <nav
-        className="navbar navbar-expand-lg navbar-light shadow-sm"
-      
+        className="navbar navbar-expand-lg shadow-sm"
+        style={{
+          backgroundColor: "rgba(255, 255, 255, 0.7)",
+          backdropFilter: "blur(15px)",
+          WebkitBackdropFilter: "blur(10px)",
+          position: "fixed",
+          top: 0,
+          width: "100%",
+          zIndex: 1030,
+          borderBottom: "1px solid rgba(0, 0, 0, 0.1)",
+        }}
       >
         <div className="container-fluid">
           <Link className="navbar-brand d-flex align-items-center" to="/">
             <img
               src={logo}
               alt="Logo"
-              width="80"
-              height="90"
+              width="100"
+              height="100"
               className="d-inline-block align-top"
             />
           </Link>
@@ -34,7 +43,7 @@ const Navbar = () => {
           </button>
 
           <div
-            className="collapse navbar-collapse justify-content-between"
+            className="collapse navbar-collapse justify-content-center gap-5"
             id="navbarNav"
           >
             <ul className="navbar-nav">
@@ -147,7 +156,6 @@ const Navbar = () => {
                 <ul
                   className="dropdown-menu "
                   style={{
-                    
                     border: "none",
                     padding: "1",
                   }}
@@ -201,23 +209,26 @@ const Navbar = () => {
               </li>
             </ul>
 
-            <div className="d-flex align-items-center text-end ms-lg-3">
+            <div className="d-flex align-items-center text-end  justify-content-end ms-lg-3">
+              <FaHeadset size={35} color="#800000" className="p-1" />
               <div className="me-2 text-end">
-                <small className="d-block fw-semibold">Call Us</small>
+                <small className="d-inline-block fw-semibold bg-success text-white rounded-circle px-2 py-1 shadow-sm">
+                  Call Us
+                </small>
+
                 <span
                   className="d-block fw-bold text-nowrap"
                   style={{ fontSize: "0.9rem" }}
                 >
-                  08068007772
+                  8608600772
                 </span>
                 <span
                   className="d-block fw-bold text-nowrap"
                   style={{ fontSize: "0.9rem" }}
                 >
-                  08068007776
+                  8608600778
                 </span>
               </div>
-              <FaHeadset size={28} color="#800000" />
             </div>
           </div>
         </div>
