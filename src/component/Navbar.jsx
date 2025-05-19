@@ -68,7 +68,7 @@ const Navbar = () => {
               <li className="nav-item dropdown">
                 <a
                   className="nav-link dropdown-toggle"
-                  href="#"
+                  href=""
                   role="button"
                   data-bs-toggle="dropdown"
                   style={{ color: "#007f4f", fontWeight: "bold" }}
@@ -137,7 +137,7 @@ const Navbar = () => {
               <li className="nav-item dropdown">
                 <a
                   className="nav-link dropdown-toggle text-success fw-bold"
-                  href="#"
+                  href=""
                   role="button"
                   data-bs-toggle="dropdown"
                 >
