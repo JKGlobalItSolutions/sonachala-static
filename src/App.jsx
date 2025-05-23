@@ -57,6 +57,8 @@
 
 import React from "react";
 import { HashRouter as Router, Routes, Route } from "react-router-dom"; // ✅ HashRouter
+import './App.css';
+
 import Navbar from "./component/Navbar.jsx";
 import Footer from "./component/Footer.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
