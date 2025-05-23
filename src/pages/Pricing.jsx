@@ -7,13 +7,16 @@ const Pricing = () => {
   const [showFormElite, setShowFormElite] = useState(false);
   const [showFormEliteform, setShowFormEliteform] = useState(false);
   const [showRevenueManagement, setShowRevenueManagement] = useState(false);
+  const [showRevenueManagementform, setShowRevenueManagementform] =
+    useState(false);
 
   const handleBookingClick = () => setShowForm(true);
   const handleBookingClickone = () => setShowFormone(true);
   const handleBookingClickElite = () => setShowFormElite(true);
   const handleBookingClickEliteform = () => setShowFormEliteform(true);
-
   const handleRevenueManagementClick = () => setShowRevenueManagement(true);
+  const handleRevenueManagementClickform = () =>
+    setShowRevenueManagementform(true);
 
   const handleCloseForm = () => {
     setShowForm(false);
@@ -21,6 +24,7 @@ const Pricing = () => {
     setShowFormElite(false);
     setShowFormEliteform(false);
     setShowRevenueManagement(false);
+    setShowRevenueManagementform(false); // ✅ Close this too
   };
 
   const plans = [
@@ -72,7 +76,7 @@ const Pricing = () => {
   ];
 
   const PlanCard = ({ title, features, center }) => (
-    <div className={`  p-3 h-100 ${center ? "text-center" : ""}`}>
+    <div className={`p-3 h-100 ${center ? "text-center" : ""}`}>
       <h6 className="fw-bold mb-2">{title}</h6>
       <ul className="list-unstyled small mb-3 ps-3 text-start">
         {features.map((feature, i) => (
@@ -83,6 +87,7 @@ const Pricing = () => {
         ))}
       </ul>
       <button
+        onClick={handleRevenueManagementClickform}
         className="btn btn-sm w-100"
         style={{
           backgroundColor: "#5b2919",
@@ -117,14 +122,18 @@ const Pricing = () => {
     </div>
   );
 
+
+  
   return (
     <div className="position-relative">
       {/* Overlay */}
+
       {(showForm ||
         showFormone ||
         showFormElite ||
         showFormEliteform ||
-        showRevenueManagement) && (
+        showRevenueManagement ||
+        showRevenueManagementform) && (
         <div
           className="position-fixed top-0 start-0 w-100 h-100"
           style={{
@@ -173,11 +182,12 @@ const Pricing = () => {
             </button>
 
             <button
-              className="service-btn"
-              onClick={handleRevenueManagementClick} // This triggers the form display
+              onClick={handleRevenueManagementClickform}
+              className="bg-green-600 text-white px-4 py-2 rounded-full mt-4"
             >
               Revenue Management
             </button>
+
           </div>
           <div className="service-row mb-3">
             <button className="service-btn">Services</button>
@@ -636,6 +646,81 @@ const Pricing = () => {
             </div>
           </div>
         </div>
+      )}
+
+      {showRevenueManagementform && (
+        <form
+          className="p-6 rounded shadow-lg fixed z-50 bg-white w-[90%] max-w-2xl"
+          style={{
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+          }}
+        >
+          <button
+            type="button"
+            onClick={handleCloseForm}
+            style={{
+              position: "absolute",
+              top: "10px",
+              right: "10px",
+              background: "transparent",
+              border: "none",
+              fontSize: "1.5rem",
+              cursor: "pointer",
+              color: "#888",
+            }}
+            aria-label="Close form"
+          >
+            &times;
+          </button>
+          <h5 className="mb-4 text-lg font-semibold">Revenue Management</h5>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+            <input
+              type="text"
+              placeholder="Property Name"
+              className="border border-green-600 rounded p-2 w-full"
+            />
+            <input
+              type="text"
+              placeholder="Contact Number*"
+              className="border border-green-600 rounded p-2 w-full"
+            />
+            <input
+              type="text"
+              placeholder="Contact Person Name"
+              className="border border-green-600 rounded p-2 w-full"
+            />
+            <input
+              type="text"
+              placeholder="Contact Person Phone No"
+              className="border border-green-600 rounded p-2 w-full"
+            />
+            <input
+              type="text"
+              placeholder="Total No.of Property"
+              className="border border-green-600 rounded p-2 w-full"
+            />
+            <input
+              type="text"
+              placeholder="Total No.of Rooms"
+              className="border border-green-600 rounded p-2 w-full"
+            />
+          </div>
+
+          <textarea
+            placeholder="Address*"
+            className="border border-green-600 rounded p-2 w-full h-28 mb-6"
+          ></textarea>
+
+          <button
+            type="submit"
+            className="bg-green-600 text-white px-6 py-2 rounded-full w-full"
+          >
+            Submit
+          </button>
+        </form>
       )}
     </div>
   );
