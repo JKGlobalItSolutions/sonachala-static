@@ -4,27 +4,54 @@ import pricingBanner from "../assets/banners/pricing.png";
 const Pricing = () => {
   const [showForm, setShowForm] = useState(false);
   const [showFormone, setShowFormone] = useState(false);
+
   const [showFormElite, setShowFormElite] = useState(false);
   const [showFormEliteform, setShowFormEliteform] = useState(false);
+
   const [showRevenueManagement, setShowRevenueManagement] = useState(false);
   const [showRevenueManagementform, setShowRevenueManagementform] =
     useState(false);
 
+  const [showFormPlanB, setShowFormPlanB] = useState(false);
+  const [showFormPlanBForm, setShowFormPlanBForm] = useState(false);
+
+  const [showFormSoftware, setShowFormSoftware] = useState(false);
+
   const handleBookingClick = () => setShowForm(true);
   const handleBookingClickone = () => setShowFormone(true);
+
   const handleBookingClickElite = () => setShowFormElite(true);
   const handleBookingClickEliteform = () => setShowFormEliteform(true);
+
   const handleRevenueManagementClick = () => setShowRevenueManagement(true);
   const handleRevenueManagementClickform = () =>
     setShowRevenueManagementform(true);
 
+  const handlePlanBClick = () => setShowFormPlanB(true);
+
+  const handlePlanBExploreClick = () => {
+    setShowFormPlanBForm(true);
+    setShowFormPlanB(false);
+  };
+
+  const handleSoftwareClick = () => setShowFormSoftware(true);
+
+  // close btn
+
   const handleCloseForm = () => {
     setShowForm(false);
     setShowFormone(false);
+
     setShowFormElite(false);
     setShowFormEliteform(false);
+
     setShowRevenueManagement(false);
-    setShowRevenueManagementform(false); // ✅ Close this too
+    setShowRevenueManagementform(false);
+
+    setShowFormPlanB(false);
+    setShowFormPlanBForm(false);
+
+    setShowFormSoftware(false);
   };
 
   const plans = [
@@ -122,8 +149,6 @@ const Pricing = () => {
     </div>
   );
 
-
-  
   return (
     <div className="position-relative">
       {/* Overlay */}
@@ -133,7 +158,10 @@ const Pricing = () => {
         showFormElite ||
         showFormEliteform ||
         showRevenueManagement ||
-        showRevenueManagementform) && (
+        showRevenueManagementform ||
+        showFormPlanB ||
+        showFormPlanBForm ||
+         showFormSoftware ) && (
         <div
           className="position-fixed top-0 start-0 w-100 h-100"
           style={{
@@ -182,16 +210,20 @@ const Pricing = () => {
             </button>
 
             <button
-              onClick={handleRevenueManagementClickform}
-              className="bg-green-600 text-white px-4 py-2 rounded-full mt-4"
+              onClick={handleRevenueManagementClick}
+              className="service-btn"
             >
               Revenue Management
             </button>
-
           </div>
           <div className="service-row mb-3">
-            <button className="service-btn">Services</button>
-            <button className="service-btn">Software Services</button>
+            <button className="service-btn" onClick={handlePlanBClick}>
+              Services
+            </button>
+
+            <button className="service-btn" onClick={handleSoftwareClick}>
+              Software Services
+            </button>
           </div>
         </div>
 
@@ -563,16 +595,17 @@ const Pricing = () => {
         </div>
       )}
 
-      {/* Revenue Management Section */}
-      {showRevenueManagement && (
+      {/* Revenue Management Overview - show only if showRevenueManagement is true AND form is false */}
+      {showRevenueManagement && !showRevenueManagementform && (
         <div
-          className="position-fixed top-50 start-50 translate-middle bg-white shadow-lg rounded"
+          className="position-fixed start-50 translate-middle-x bg-white p-3 rounded shadow"
           style={{
+            top: "140px",
             zIndex: 1050,
             width: "95%",
             maxWidth: "1000px",
-            maxHeight: "95vh", // limit max height to 80% of viewport height
-            overflowY: "auto", // add vertical scroll if content overflows
+            maxHeight: "95vh",
+            overflowY: "auto",
             border: "3px solid #0e6b3c",
           }}
         >
@@ -586,19 +619,12 @@ const Pricing = () => {
 
           {/* Header */}
           <div className="bg-success text-white text-center py-2 rounded-top">
-            {" "}
-            {/* reduced py from 3 to 2 */}
             <h2 className="h6 mb-0">OTA Management (Revenue Management)</h2>
           </div>
 
           {/* Plans Container */}
           <div className="rounded-bottom p-3 bg-white">
-            {" "}
-            {/* reduced p-4 to p-3 */}
-            {/* Row 1: Basic & Gold */}
             <div className="row mb-3 align-items-center">
-              {" "}
-              {/* reduced mb-4 to mb-3 */}
               <div className="col-5">
                 <PlanCard title="Basic" features={plans[0].features} />
               </div>
@@ -607,10 +633,8 @@ const Pricing = () => {
                 <PlanCard title="Gold" features={plans[1].features} />
               </div>
             </div>
-            {/* Row 2: Standard & Platinum */}
+
             <div className="row mb-3 align-items-center">
-              {" "}
-              {/* reduced mb-4 to mb-3 */}
               <div className="col-5">
                 <PlanCard title="Standard" features={plans[2].features} />
               </div>
@@ -619,10 +643,8 @@ const Pricing = () => {
                 <PlanCard title="Platinum" features={plans[3].features} />
               </div>
             </div>
-            {/* Horizontal Connector */}
+
             <div className="d-flex justify-content-center align-items-center my-3">
-              {" "}
-              {/* reduced my-4 to my-3 */}
               <Diamond />
               <div
                 style={{
@@ -634,7 +656,7 @@ const Pricing = () => {
               ></div>
               <Diamond />
             </div>
-            {/* Premium Centered */}
+
             <div className="row justify-content-center">
               <div className="col-md-6">
                 <PlanCard
@@ -644,17 +666,247 @@ const Pricing = () => {
                 />
               </div>
             </div>
+
+            <div className="text-center mt-4">
+              <button
+                className="btn text-white px-4 py-2 rounded-pill fw-semibold"
+                style={{
+                  background: "linear-gradient(to right, #6b1e14, #003c26)",
+                }}
+                onClick={handleRevenueManagementClickform}
+              >
+                Explore
+              </button>
+            </div>
           </div>
         </div>
       )}
 
+      {/* Revenue Management Full Form */}
       {showRevenueManagementform && (
-        <form
-          className="p-6 rounded shadow-lg fixed z-50 bg-white w-[90%] max-w-2xl"
+        <div
+          className="position-fixed top-50 start-50 translate-middle bg-white p-4 rounded shadow"
+          style={{ zIndex: 1050, width: "95%", maxWidth: "650px" }}
+        >
+          <button
+            type="button"
+            onClick={handleCloseForm}
+            className="btn-close position-absolute"
+            style={{ top: "10px", right: "10px" }}
+            aria-label="Close"
+          ></button>
+
+          <form>
+            <div className="row g-3">
+              <div className="col-md-6">
+                <input
+                  type="text"
+                  className="form-control border-success"
+                  placeholder="Property Name"
+                />
+              </div>
+              <div className="col-md-6">
+                <input
+                  type="text"
+                  className="form-control border-success"
+                  placeholder="Contact Number*"
+                />
+              </div>
+              <div className="col-md-6">
+                <input
+                  type="text"
+                  className="form-control border-success"
+                  placeholder="Contact Person Name"
+                />
+              </div>
+              <div className="col-md-6">
+                <input
+                  type="text"
+                  className="form-control border-success"
+                  placeholder="Contact Person Phone No"
+                />
+              </div>
+              <div className="col-md-6">
+                <input
+                  type="text"
+                  className="form-control border-success"
+                  placeholder="Total No.of Property"
+                />
+              </div>
+              <div className="col-md-6">
+                <input
+                  type="text"
+                  className="form-control border-success"
+                  placeholder="Total No.of Rooms"
+                />
+              </div>
+              <div className="col-12">
+                <textarea
+                  className="form-control border-success"
+                  placeholder="Address*"
+                  rows="4"
+                ></textarea>
+              </div>
+              <div className="col-12 text-center">
+                <button
+                  type="submit"
+                  className="btn text-white px-4 py-2 rounded-pill fw-semibold"
+                  style={{
+                    background: "linear-gradient(to right, #6b1e14, #003c26)",
+                  }}
+                >
+                  Submit
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      )}
+
+      {/* Modal for Plan B Services */}
+      {showFormPlanB && !showFormPlanBForm && (
+        <div
+          className="position-fixed start-50 translate-middle-x bg-white p-3 rounded shadow"
           style={{
-            top: "50%",
+            top: "140px",
+            zIndex: 1050,
+            width: "90%",
+            maxWidth: "420px",
+          }}
+        >
+          <button
+            type="button"
+            onClick={handleCloseForm}
+            className="btn-close position-absolute"
+            style={{ top: "10px", right: "10px" }}
+            aria-label="Close"
+          ></button>
+
+          <div className="card border-4 border-success rounded-4 mt-3">
+            <div className="card-header bg-success text-white fw-bold fs-5 rounded-top-4">
+              Plan B
+            </div>
+            <div className="card-body">
+              <h5 className="card-title fw-bold">Services</h5>
+              <ul className="list-unstyled mt-3 mb-4">
+                <li className="mb-2">📌 Human Resource</li>
+                <li className="mb-2">📌 Auditing Services</li>
+                <li className="mb-2">📌 Photography With High Quality</li>
+                <li className="mb-2">📌 Handy Man Services</li>
+                <li className="mb-2">📌 IT Product & Services</li>
+                <li className="mb-2">📌 Other Services</li>
+              </ul>
+
+              <div className="text-center">
+                <button
+                  className="btn text-white px-4 py-2 rounded-pill fw-semibold"
+                  style={{
+                    background: "linear-gradient(to right, #6b1e14, #003c26)",
+                    cursor: "pointer",
+                  }}
+                  onClick={handlePlanBExploreClick}
+                >
+                  Explore
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Form for Plan B */}
+      {showFormPlanBForm && (
+        <div
+          className="position-fixed top-50 start-50 translate-middle bg-white p-4 rounded shadow"
+          style={{ zIndex: 1050, width: "95%", maxWidth: "650px" }}
+        >
+          <button
+            type="button"
+            onClick={handleCloseForm}
+            className="btn-close position-absolute"
+            style={{ top: "10px", right: "10px" }}
+            aria-label="Close"
+          ></button>
+
+          <form>
+            <div className="row g-3">
+              <div className="col-md-6">
+                <input
+                  type="text"
+                  className="form-control border-success"
+                  placeholder="Property Name"
+                />
+              </div>
+              <div className="col-md-6">
+                <input
+                  type="text"
+                  className="form-control border-success"
+                  placeholder="Contact Number*"
+                />
+              </div>
+              <div className="col-md-6">
+                <input
+                  type="text"
+                  className="form-control border-success"
+                  placeholder="Contact Person Name"
+                />
+              </div>
+              <div className="col-md-6">
+                <input
+                  type="text"
+                  className="form-control border-success"
+                  placeholder="Contact Person Phone No"
+                />
+              </div>
+              <div className="col-md-6">
+                <input
+                  type="text"
+                  className="form-control border-success"
+                  placeholder="Total No.of Property"
+                />
+              </div>
+              <div className="col-md-6">
+                <input
+                  type="text"
+                  className="form-control border-success"
+                  placeholder="Total No.of Rooms"
+                />
+              </div>
+              <div className="col-12">
+                <textarea
+                  className="form-control border-success"
+                  placeholder="Address*"
+                  rows="4"
+                ></textarea>
+              </div>
+              <div className="col-12 text-center">
+                <button
+                  type="submit"
+                  className="btn text-white px-4 py-2 rounded-pill fw-semibold"
+                  style={{
+                    background: "linear-gradient(to right, #6b1e14, #003c26)",
+                  }}
+                >
+                  Submit
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      )}
+
+      {/* Software Services Form */}
+      {showFormSoftware && (
+        <form
+          className="booking-form p-4 rounded shadow position-fixed"
+          style={{
+            top: "55%",
             left: "50%",
             transform: "translate(-50%, -50%)",
+            backgroundColor: "white",
+            zIndex: 20,
+            width: "90%",
+            maxWidth: "600px",
           }}
         >
           <button
@@ -674,54 +926,75 @@ const Pricing = () => {
           >
             &times;
           </button>
-          <h5 className="mb-4 text-lg font-semibold">Revenue Management</h5>
+          <h5 className="mb-4">Software Services</h5>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div className="form-row mb-3 d-flex gap-3">
             <input
+              className="form-control"
               type="text"
               placeholder="Property Name"
-              className="border border-green-600 rounded p-2 w-full"
             />
             <input
+              className="form-control"
               type="text"
               placeholder="Contact Number*"
-              className="border border-green-600 rounded p-2 w-full"
-            />
-            <input
-              type="text"
-              placeholder="Contact Person Name"
-              className="border border-green-600 rounded p-2 w-full"
-            />
-            <input
-              type="text"
-              placeholder="Contact Person Phone No"
-              className="border border-green-600 rounded p-2 w-full"
-            />
-            <input
-              type="text"
-              placeholder="Total No.of Property"
-              className="border border-green-600 rounded p-2 w-full"
-            />
-            <input
-              type="text"
-              placeholder="Total No.of Rooms"
-              className="border border-green-600 rounded p-2 w-full"
             />
           </div>
 
-          <textarea
-            placeholder="Address*"
-            className="border border-green-600 rounded p-2 w-full h-28 mb-6"
-          ></textarea>
+          <div className="form-row mb-3 d-flex gap-3">
+            <input
+              className="form-control"
+              type="text"
+              placeholder="Contact Person Name"
+            />
+            <input
+              className="form-control"
+              type="text"
+              placeholder="Contact Person Phone No"
+            />
+          </div>
 
-          <button
-            type="submit"
-            className="bg-green-600 text-white px-6 py-2 rounded-full w-full"
-          >
-            Submit
-          </button>
+          <div className="form-row mb-3 d-flex gap-3">
+            <input
+              className="form-control"
+              type="text"
+              placeholder="Total No. of Property"
+            />
+            <input
+              className="form-control"
+              type="text"
+              placeholder="Total No. of Rooms"
+            />
+          </div>
+
+          <div className="form-row mb-3">
+            <select className="form-control">
+              <option>Services</option>
+              <option>Billing Software</option>
+              <option>IT Products</option>
+              <option>CCTV Camerat</option>
+              <option>Printer</option>
+
+
+            </select>
+          </div>
+
+          <div className="form-row mb-3">
+            <textarea
+              className="form-control"
+              placeholder="Address*"
+              rows="4"
+            />
+          </div>
+
+          <div className="form-submit">
+            <button type="submit" className="btn btn-success w-100">
+              Submit
+            </button>
+          </div>
         </form>
       )}
+
     </div>
   );
 };

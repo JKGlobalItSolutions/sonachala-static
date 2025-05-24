@@ -14,7 +14,7 @@ const Home = () => {
           src={banner}
           alt="Team Banner"
           className="img-fluid w-100"
-          style={{ maxHeight: "400px", objectFit: "cover" }}
+          style={{ maxHeight: "600px", objectFit: "cover" }}
         />
       </div>
 
