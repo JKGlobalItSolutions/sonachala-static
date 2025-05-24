@@ -3,12 +3,13 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://JKGlobalItSolutions.github.io/sonachala-static",
+  "homepage": "https://sonachala.in",
+
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "predeploy": "npm run build",
+    "predeploy": "vite build && echo 'sonachala.in' > dist/CNAME",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
