@@ -161,7 +161,7 @@ const Pricing = () => {
         showRevenueManagementform ||
         showFormPlanB ||
         showFormPlanBForm ||
-         showFormSoftware ) && (
+        showFormSoftware) && (
         <div
           className="position-fixed top-0 start-0 w-100 h-100"
           style={{
@@ -193,37 +193,96 @@ const Pricing = () => {
           </p>
         </div>
 
-        {/* Services Buttons */}
-        <div className="services-container">
-          <div className="service-row mb-3">
-            <button className="service-btn me-3" onClick={handleBookingClick}>
-              Booking Engine
-            </button>
-            <button className="service-btn" onClick={handleBookingClickone}>
-              Total Property Management
-            </button>
+        {/* Desktop Version Only */}
+        <div className="d-none d-md-block">
+          <div className="services-container">
+            <div className="service-row mb-3">
+              <button className="service-btn me-3" onClick={handleBookingClick}>
+                Booking Engine
+              </button>
+              <button className="service-btn" onClick={handleBookingClickone}>
+                Total Property Management
+              </button>
+            </div>
+
+            <div className="service-row mb-3">
+              <button className="service-btn" onClick={handleBookingClickElite}>
+                Elite 360 degree Plan
+              </button>
+              <button
+                className="service-btn"
+                onClick={handleRevenueManagementClick}
+              >
+                Revenue Management
+              </button>
+            </div>
+
+            <div className="service-row mb-3">
+              <button className="service-btn" onClick={handlePlanBClick}>
+                Services
+              </button>
+              <button className="service-btn" onClick={handleSoftwareClick}>
+                Software Services
+              </button>
+            </div>
           </div>
+        </div>
 
-          <div className="service-row mb-3">
-            <button className="service-btn" onClick={handleBookingClickElite}>
-              Elite 360 degree Plan
-            </button>
+        {/* Mobile Version Only */}
+        <div className="d-block d-md-none">
+          <div className="container my-4">
+            <div className="row g-3 justify-content-center">
+              <div className="col-12 col-md-5 d-flex justify-content-center">
+                <button
+                  className="btn btn-success w-100 custom-btn"
+                  onClick={handleBookingClick}
+                >
+                  Booking Engine
+                </button>
+              </div>
+              <div className="col-12 col-md-5 d-flex justify-content-center">
+                <button
+                  className="btn btn-success w-100 custom-btn"
+                  onClick={handleBookingClickone}
+                >
+                  Total Property Management
+                </button>
+              </div>
 
-            <button
-              onClick={handleRevenueManagementClick}
-              className="service-btn"
-            >
-              Revenue Management
-            </button>
-          </div>
-          <div className="service-row mb-3">
-            <button className="service-btn" onClick={handlePlanBClick}>
-              Services
-            </button>
+              <div className="col-12 col-md-5 d-flex justify-content-center">
+                <button
+                  className="btn btn-success w-100 custom-btn"
+                  onClick={handleBookingClickElite}
+                >
+                  Elite 360 degree Plan
+                </button>
+              </div>
+              <div className="col-12 col-md-5 d-flex justify-content-center">
+                <button
+                  className="btn btn-success w-100 custom-btn"
+                  onClick={handleRevenueManagementClick}
+                >
+                  Revenue Management
+                </button>
+              </div>
 
-            <button className="service-btn" onClick={handleSoftwareClick}>
-              Software Services
-            </button>
+              <div className="col-12 col-md-5 d-flex justify-content-center">
+                <button
+                  className="btn btn-success w-100 custom-btn"
+                  onClick={handlePlanBClick}
+                >
+                  Services
+                </button>
+              </div>
+              <div className="col-12 col-md-5 d-flex justify-content-center">
+                <button
+                  className="btn btn-success w-100 custom-btn"
+                  onClick={handleSoftwareClick}
+                >
+                  Software Services
+                </button>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -464,50 +523,93 @@ const Pricing = () => {
       {/* showFormElite - ONLY show if showFormElite is true AND showFormEliteform is false */}
       {showFormElite && !showFormEliteform && (
         <div
-          className="position-fixed start-50 translate-middle-x bg-white p-3 rounded shadow"
+          className="position-fixed start-50 translate-middle-x bg-white p-4 rounded shadow"
           style={{
-            top: "140px",
+            top: "2.5vh",
             zIndex: 1050,
             width: "90%",
-            maxWidth: "420px",
+            maxWidth: "950px",
+            height: "95vh", // Take nearly full screen height
+            overflowY: "auto", // Allow scrolling if content overflows
           }}
         >
           <button
             type="button"
             onClick={handleCloseForm}
             className="btn-close position-absolute"
-            style={{ top: "10px", right: "10px" }}
+            style={{ top: "10px", right: "1px" }}
             aria-label="Close"
           ></button>
 
-          <div className="card border-4 border-success rounded-4 mt-3">
-            <div className="card-header bg-success text-white fw-bold fs-5 rounded-top-4">
-              Plan A
-            </div>
-            <div className="card-body">
-              <h5 className="card-title fw-bold">Elite 360 Degree Plan</h5>
-              <ul className="list-unstyled mt-3 mb-4">
-                <li className="mb-2">📌 Booking Engine</li>
-                <li className="mb-2">📌 OTA Maintenance</li>
-                <li className="mb-2">📌 Channel Manager Executive Support</li>
-                <li className="mb-2">📌 HMS & PMS Software</li>
-                <li className="mb-2">📌 Google My Business</li>
-                <li className="mb-2">📌 Social Media Support</li>
-                <li className="mb-2">📌 SEO & Google Ads</li>
-                <li className="mb-2">📌 Website Design & Development</li>
-              </ul>
+          {/* Flex container for both plans */}
+          <div className="d-flex flex-wrap gap-3 justify-content-center">
+            {/* Plan A */}
+            <div
+              className="card border-4 border-success rounded-4"
+              style={{ flex: "1 1 350px" }}
+            >
+              <div className="card-header bg-success text-white fw-bold fs-5 rounded-top-4">
+                Plan A
+              </div>
+              <div className="card-body">
+                <h5 className="card-title fw-bold">Elite 360 Degree Plan</h5>
+                <ul className="list-unstyled mt-3 mb-4">
+                  <li className="mb-2">📌 Booking Engine</li>
+                  <li className="mb-2">📌 OTA Maintenance</li>
+                  <li className="mb-2">📌 Channel Manager Executive Support</li>
+                  <li className="mb-2">📌 HMS & PMS Software</li>
+                  <li className="mb-2">📌 Google My Business</li>
+                  <li className="mb-2">📌 Social Media Support</li>
+                  <li className="mb-2">📌 SEO & Google Ads</li>
+                  <li className="mb-2">📌 Website Design & Development</li>
+                </ul>
 
-              <div className="text-center">
-                <button
-                  className="btn text-white px-4 py-2 rounded-pill fw-semibold"
-                  style={{
-                    background: "linear-gradient(to right, #6b1e14, #003c26)",
-                    cursor: "pointer",
-                  }}
-                  onClick={handleBookingClickEliteform}
-                >
-                  Explore
-                </button>
+                <div className="text-center">
+                  <button
+                    className="btn text-white px-4 py-2 rounded-pill fw-semibold"
+                    style={{
+                      background: "linear-gradient(to right, #6b1e14, #003c26)",
+                      cursor: "pointer",
+                    }}
+                    onClick={handleBookingClickEliteform}
+                  >
+                    Explore
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Plan B */}
+            <div
+              className="card border-4 border-success rounded-4"
+              style={{ flex: "1 1 350px" }}
+            >
+              <div className="card-header bg-success text-white fw-bold fs-5 rounded-top-4">
+                Plan B
+              </div>
+              <div className="card-body">
+                <h5 className="card-title fw-bold">Services</h5>
+                <ul className="list-unstyled mt-3 mb-4">
+                  <li className="mb-2">📌 Human Resource</li>
+                  <li className="mb-2">📌 Auditing Services</li>
+                  <li className="mb-2">📌 Photography With High Quality</li>
+                  <li className="mb-2">📌 Handy Man Services</li>
+                  <li className="mb-2">📌 IT Product & Services</li>
+                  <li className="mb-2">📌 Other Services</li>
+                </ul>
+
+                <div className="text-center">
+                  <button
+                    className="btn text-white px-4 py-2 rounded-pill fw-semibold"
+                    style={{
+                      background: "linear-gradient(to right, #6b1e14, #003c26)",
+                      cursor: "pointer",
+                    }}
+                    onClick={handlePlanBExploreClick}
+                  >
+                    Explore
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -974,8 +1076,6 @@ const Pricing = () => {
               <option>IT Products</option>
               <option>CCTV Camerat</option>
               <option>Printer</option>
-
-
             </select>
           </div>
 
@@ -994,7 +1094,6 @@ const Pricing = () => {
           </div>
         </form>
       )}
-
     </div>
   );
 };
