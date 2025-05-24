@@ -176,7 +176,7 @@ const Home = () => {
             className="p-4"
             style={{ backgroundColor: "#a7dbcb", borderRadius: "4px" }}
           >
-            <h5 className="fw-bold text-primary">4. Why BM</h5>
+            <h5 className="fw-bold text-primary">4. Why Sonachala</h5>
             <p>
               Sonachala is committed to customer satisfaction, backed by a
               dedicated team of enthusiastic professionals who continuously
